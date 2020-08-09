@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Service</title>
+</head>
+<body>
+<div align="center">
+    <h1 style="color:Purple;">**All Services**</h1>
+    <a href="new" style="text-decoration: none;">Create New Service</a>
+    <br/><br/>
+    <table border="1" style="background-color:lightBlue;" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Service ID</th>
+                <th>Name</th>
+                <th>Active</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td ><span th:text="${product.active} ? 'Yes' : 'No'"></span></td>
+                <td th:text="${product.price}">Price</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>
